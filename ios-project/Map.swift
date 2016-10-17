@@ -15,8 +15,8 @@ class Map {
     var mapSizeY: Double = 0
     var topLeftPoint: MKMapPoint!
     var bottomRightPoint: MKMapPoint!
-    var mapSize: MKMapSize?
-    var mapActual: MKMapRect?
+    var mapSize: MKMapSize!
+    var mapActual: MKMapRect!
     static var map : Map?
     
     //not singleton yet
@@ -47,6 +47,27 @@ class Map {
             tiles.insert(Tile(id: i))
         }
     }
+    
+    func getTopCorner() -> MKMapPoint {
+        return topLeftPoint
+    }
+    
+    func getBotCorner() -> MKMapPoint {
+        return bottomRightPoint
+    }
+    
+    func getTileSet() -> Set<Tile> {
+        return tiles
+    }
+    
+    func getMapSize() -> MKMapSize {
+        return mapSize
+    }
+    
+    func getMapActual() -> MKMapRect {
+        return mapActual
+    }
+    
     
     func setPowerUps(tiles: Set<Tile>, numPowerUps: Int) {
 //        TODO
