@@ -63,10 +63,18 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     // stores power-ups on the map
     var powerUp = [Int: CLLocationCoordinate2D]()
 
+    func runGame(){
+        let player1 = Player("player1")
+        let player2 = Player("player2")
+        
+        let game = Game(players: [player1, player2], gameTime: 2000)
+        game.startGame()
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         configureDatabase()
         
         // TEST MAP
@@ -202,8 +210,6 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         
          //this sends the request to start fetching the location
         Notifications.postGpsToggled(self, toggle: true)
-        
-
     }
     
     // remove the pin(power up), when it is used or collected by a player, from the map
@@ -497,6 +503,11 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        runGame()
+        print("starting end game view")  
+        performSegue(withIdentifier: "showGameEndView" , sender: nil)
+    }
 
     /*
     // MARK: - Navigation

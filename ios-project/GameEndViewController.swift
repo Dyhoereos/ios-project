@@ -39,10 +39,10 @@ class GameEndViewController: UIViewController {
             //call either wonGame or lostGame depending on outcome of game
             self?.wonGame()
             
-            let losses = Int(totPlayed)!-Int(winCount)!
+//            let losses = Int(totPlayed)!-Int(winCount)!
             
-            self?.lossLabel.text=String(losses)
-            self?.winLabel.text=String(winCount)
+ //           self?.lossLabel.text=String(losses)
+  //          self?.winLabel.text=String(winCount)
             
             //kill instance of game if not dead already
         })
